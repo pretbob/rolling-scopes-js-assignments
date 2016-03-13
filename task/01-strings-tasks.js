@@ -120,7 +120,7 @@ function removeLeadingAndTrailingWhitespaces(value) {
  *   'cat', 3 => 'catcatcat'
  */
 function repeatString(value, count) {
-    throw new Error('Not implemented');
+    return value.repeat(count);
 }
 
 /**
@@ -136,7 +136,7 @@ function repeatString(value, count) {
  *   'ABABAB','BA' => 'ABAB'
  */
 function removeFirstOccurrences(str, value) {
-    throw new Error('Not implemented');
+  return str.replace(value, "");
 }
 
 /**
@@ -151,10 +151,8 @@ function removeFirstOccurrences(str, value) {
  *   '<a>' => 'a'
  */
 function unbracketTag(str) {
-    throw new Error('Not implemented');
+        return str.slice(1, -1);
 }
-
-
 /**
  * Converts all characters of the specified string into the upper case
  *
@@ -166,11 +164,11 @@ function unbracketTag(str) {
  *  'abcdefghijklmnopqrstuvwxyz' => 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
  */
 function convertToUpperCase(str) {
-    throw new Error('Not implemented');
+    return str.toLocaleUpperCase();
 }
 
 /**
- * Extracts e-mails from single string with e-mails list delimeted by semicolons
+ *
  *
  * @param {string} str
  * @return {array}
@@ -180,7 +178,7 @@ function convertToUpperCase(str) {
  *   'info@gmail.com' => ['info@gmail.com']
  */
 function extractEmails(str) {
-    throw new Error('Not implemented');
+    return str.split(";");
 }
 
 /**
@@ -207,10 +205,28 @@ function extractEmails(str) {
  *
  */
 function getRectangleString(width, height) {
-    throw new Error('Not implemented');
+    var a = "│";
+    var b = "─";
+    var с = "┘";
+    var d = "┌";
+    var e = "┐";
+    var f = "└";
+
+
+     var  middleLine = a + " ".repeat(width-2) + a + "\n";
+
+    if (height <= 2) {
+
+        return d + e + "\n" + f + с + "\n";
+
+    }
+    if (height > 2) {
+        return d + b.repeat(width-2) + e + "\n"
+            +  middleLine.repeat(height-2)
+            + f + b.repeat(width-2) + с + "\n";
+
+    }
 }
-
-
 /**
  * Encode specified string with ROT13 cipher
  * See details:  https://en.wikipedia.org/wiki/ROT13
