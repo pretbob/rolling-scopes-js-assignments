@@ -8,7 +8,6 @@
  ********************************************************************************************/
 
 
-
 /**
  * Returns the result of concatenation of two strings.
  *
@@ -105,7 +104,7 @@ function getFirstChar(value) {
  *   '\tHello, World! ' => 'Hello, World!'
  */
 function removeLeadingAndTrailingWhitespaces(value) {
-  return value.trim();
+    return value.trim();
 }
 
 /**
@@ -136,7 +135,7 @@ function repeatString(value, count) {
  *   'ABABAB','BA' => 'ABAB'
  */
 function removeFirstOccurrences(str, value) {
-  return str.replace(value, "");
+    return str.replace(value, "");
 }
 
 /**
@@ -151,7 +150,7 @@ function removeFirstOccurrences(str, value) {
  *   '<a>' => 'a'
  */
 function unbracketTag(str) {
-        return str.slice(1, -1);
+    return str.slice(1, -1);
 }
 /**
  * Converts all characters of the specified string into the upper case
@@ -207,24 +206,20 @@ function extractEmails(str) {
 function getRectangleString(width, height) {
     var a = "│";
     var b = "─";
-    var с = "┘";
+    var с = "┘\n";
     var d = "┌";
-    var e = "┐";
+    var e = "┐\n";
     var f = "└";
-
-
-     var  middleLine = a + " ".repeat(width-2) + a + "\n";
+    var space = " ";
+    var middleLine = a + space.repeat(width - 2) + a + "\n";
 
     if (height <= 2) {
-
-        return d + e + "\n" + f + с + "\n";
-
+        return d + e + f + с;
     }
-    if (height > 2) {
-        return d + b.repeat(width-2) + e + "\n"
-            +  middleLine.repeat(height-2)
-            + f + b.repeat(width-2) + с + "\n";
-
+    else {
+        return d + b.repeat(width - 2) + e
+            + middleLine.repeat(height - 2)
+            + f + b.repeat(width - 2) + с;
     }
 }
 /**
