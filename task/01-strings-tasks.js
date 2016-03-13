@@ -205,7 +205,7 @@ function extractEmails(str) {
  */
 function getRectangleString(width, height) {
     var a = "│";
-    var b = "─";
+    var b = "─";  
     var с = "┘\n";
     var d = "┌";
     var e = "┐\n";
