@@ -40,7 +40,6 @@ function parseDataFromIso8601(value) {
    return new Date(value);
 }
 
-
 /**
  * Returns true if specified date is leap year and false otherwise
  * Please find algorithm here: https://en.wikipedia.org/wiki/Leap_year#Algorithm
@@ -91,9 +90,6 @@ function timeSpanToString(startDate, endDate) {
     return new Date(endDate - startDate).toISOString().slice(11, 23);
 }
 
-
-
-
 /**
  * Returns the angle (in radians) between the hands of an analog clock for the specified Greenwich time.
  * If you have problem with solution please read: https://en.wikipedia.org/wiki/Clock_angle_problem
@@ -108,7 +104,6 @@ function timeSpanToString(startDate, endDate) {
  *    Date.UTC(2016,3,5,21, 0) => Math.PI/2
  */
 
-
 function angleBetweenClockHands(date) {
     var h = date.getUTCHours();
     var m = date.getUTCMinutes();
@@ -121,7 +116,6 @@ function angleBetweenClockHands(date) {
     }
     return angle/ 180 * Math.PI;
 }
-
 
 module.exports = {
     parseDataFromRfc2822: parseDataFromRfc2822,
