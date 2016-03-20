@@ -110,7 +110,10 @@ function getArrayOfStrings(arr) {
  *    [ false, 0, NaN, '', undefined ]   => [ ]
  */
 function removeFalsyValues(arr) {
-   throw new Error('Not implemented');
+   var arr1 = arr.filter(function (a) {
+      return   Boolean(a) === true;
+   });
+   return arr1;
 }
 
 /**
@@ -124,9 +127,9 @@ function removeFalsyValues(arr) {
  *    [ 'a', 'b', 'c', 'd', 'e', 'f', 'g' ]  => [ 'A', 'B', 'C', 'D', 'E', 'F', 'G' ]
  */
 function getUpperCaseStrings(arr) {
-   throw new Error('Not implemented');
+   var a =  arr.join().toUpperCase();
+   return a.split(",");
 }
-
 
 /**
  * Returns the array of string lengths from the specified string array.
@@ -139,7 +142,10 @@ function getUpperCaseStrings(arr) {
  *    [ 'angular', 'react', 'ember' ] => [ 7, 5, 5 ]
  */
 function getStringsLength(arr) {
-   throw new Error('Not implemented');
+   var arr1 = arr.map(function (a) {
+      return a.length;
+   })
+   return arr1;
 }
 
 /**
