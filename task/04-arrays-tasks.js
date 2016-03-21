@@ -270,7 +270,11 @@ function getMovingSum(arr) {
  * [ "a" ] => []
  */
 function getSecondItems(arr) {
-   throw new Error('Not implemented');
+   var arr1 = [];
+   arr1 = arr.filter(function(a, b){
+      return b % 2;
+   });
+   return arr1;
 }
 
 
@@ -289,9 +293,12 @@ function getSecondItems(arr) {
  *  [ 1,2,3,4,5 ] => [ 1, 2,2, 3,3,3, 4,4,4,4, 5,5,5,5,5 ]
  */
 function propagateItemsByPositionIndex(arr) {
-   throw new Error('Not implemented');
+   var arr1 = [];
+   arr.map(function(a, b, arr) {
+      return arr1 = arr1.concat(new Array(b + 1).fill(a));
+   });
+   return arr1;
 }
-
 
 /** 
  * Returns the 3 largest numbers from the specified array
