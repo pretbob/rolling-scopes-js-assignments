@@ -314,7 +314,12 @@ function propagateItemsByPositionIndex(arr) {
  *   [ 10, 10, 10, 10 ] => [ 10, 10, 10 ]
  */
 function get3TopItems(arr) {
-   throw new Error('Not implemented');
+   var arr1 =[];
+   arr1 = arr.sort(function (a, b) {
+   return b - a;
+   });
+   arr1.length = 3;
+   return arr1;
 }
  
  
@@ -331,7 +336,11 @@ function get3TopItems(arr) {
  *   [ null, 1, 'elephant' ] => 1
  */
 function getPositivesCount(arr) {
-   throw new Error('Not implemented');
+   var arr1 = [];
+   arr1 = arr.filter(function (a,b) {
+      return a > 0;
+   });
+   return arr1.length;
 }
  
 /** 
