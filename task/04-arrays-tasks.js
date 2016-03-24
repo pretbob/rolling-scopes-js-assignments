@@ -357,7 +357,13 @@ function getPositivesCount(arr) {
  *   [ 'one','one','one','zero' ]     => [ 'zero','one','one','one' ]
  */
 function sortDigitNamesByNumericOrder(arr) {
-   throw new Error('Not implemented');
+   var arr1 = {zero: 0, one: 1, two: 2, three: 3, four: 4, five: 5, six: 6, seven: 7, eight: 8, nine: 9, ten: 10};
+   var arr2 = [];
+   arr2 = arr.sort(function (a, b) {
+      return arr1[a] - arr1[b];
+   });
+   return arr2;
+
 }
 
 /** 
@@ -373,7 +379,11 @@ function sortDigitNamesByNumericOrder(arr) {
  *   [ 1, 10, 100, 1000 ]  => 1111
  */
 function getItemsSum(arr) {
-   throw new Error('Not implemented');
+   var sum = arr.reduce(function (a,b) {
+      return a + b;
+
+   }, 0);
+   return sum;
 }
  
 /** 
@@ -389,7 +399,11 @@ function getItemsSum(arr) {
  *  [ null, undefined, NaN, false, 0, '' ]  => 6
  */
 function getFalsyValuesCount(arr) {
-   throw new Error('Not implemented');
+   var arr1 = [];
+   arr1 = arr.filter(function (a) {
+      return !a;
+   });
+   return arr1.length;
 }
 
 /**
@@ -406,8 +420,13 @@ function getFalsyValuesCount(arr) {
  *    [ null, undefined, null ], null => 2 
  *    [ true, 0, 1, 'true' ], true => 1
  */
+
 function findAllOccurences(arr, item) {
-   throw new Error('Not implemented');
+   var arr1 = [];
+   arr1 = arr.filter(function(a,b) {
+      return a === item
+   });
+return arr1.length;
 }
 
 /**
@@ -422,7 +441,9 @@ function findAllOccurences(arr, item) {
  *    ['rock', 'paper', 'scissors']     => 'rock,paper,scissors'
  */
 function toStringList(arr) {
-   throw new Error('Not implemented');
+   var arr1 = [];
+   arr1 = arr.join(",");
+   return arr1;
 }
 
 
@@ -451,7 +472,11 @@ function toStringList(arr) {
  *      { country: 'Russia',  city: 'Saint Petersburg' }
  */
 function sortCitiesArray(arr) {
-   throw new Error('Not implemented');
+   var arr1 = [];
+   arr1 = arr.sort(function (a,b) {
+      return  (a.country).localeCompare(b.country) || (a.city).localeCompare(b.city);
+   });
+   return arr1;
 }
 
 /**
