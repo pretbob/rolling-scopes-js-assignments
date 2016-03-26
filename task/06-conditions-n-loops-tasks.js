@@ -240,7 +240,7 @@ function getIntervalString(a, b, isStartIncluded, isEndIncluded) {
     f+= ")";}
 
     return f;
-}
+}  
 
 
 /**
