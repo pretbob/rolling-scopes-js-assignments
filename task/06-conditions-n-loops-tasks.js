@@ -141,7 +141,14 @@ function isTriangle(a,b,c) {
  *  
  */
 function doRectanglesOverlap(rect1, rect2) {
-    throw new Error('Not implemented');
+
+    if ( ((rect1.left+rect1.width) < rect2.left) || (rect2.left + rect2.width) < rect1.left) {
+        return false;
+    }
+    if ( ((rect1.top + rect1.height) < rect2.top) || ( rect1.top > (rect2.top + rect2.height) )) {
+       return false;
+    }
+    return true;
 }
 
 /**
@@ -240,7 +247,7 @@ function getIntervalString(a, b, isStartIncluded, isEndIncluded) {
     f+= ")";}
 
     return f;
-}  
+}
 
 
 /**
@@ -306,8 +313,24 @@ function reverseInteger(num) {
  *   5436468789016589 => false
  *   4916123456789012 => false
  */
+
 function isCreditCardNumber(ccn) {
-    throw new Error('Not implemented');
+    var arr = (""+ccn).split("").reverse();
+    let x = 0;
+    let sum = 0;
+    for (let i = 0; i < arr.length; i++) {
+        if ((i+1)%2 == 0) {
+            x = +arr[i]*2;
+            if (x>9){
+                x -= 9;
+            }
+        }
+        else {
+            x = +arr[i];
+        }
+        sum +=x;
+    }
+    return sum % 10 === 0;
 }
 
 
@@ -326,7 +349,15 @@ function isCreditCardNumber(ccn) {
  *   165536 (1+6+5+5+3+6 = 26,  2+6 = 8) => 8
  */
 function getDigitalRoot(num) {
-    throw new Error('Not implemented');
+    let result = num;
+    while (result >= 10) {
+        let s = ("" + result).split("");
+        result = 0;
+        for (let i = 0; i < s.length; i++) {
+            result += +s[i];
+        }
+    }
+    return result;
 }
 
 
@@ -352,7 +383,18 @@ function getDigitalRoot(num) {
  *   '{[(<{[]}>)]}' = true 
  */
 function isBracketsBalanced(str) {
-    throw new Error('Not implemented');
+    var c = ["{}", "[]", "<>", "()"];
+
+    if (str.length % 2 !== 0) {
+        return false;
+    }
+    let d = str.length/2;
+    for (let i = 1; i <=d; i++){
+        for (let j of c) {
+            str = str.replace(j, "");
+        }
+    }
+    return str.length < 1;
 }
 
 
@@ -388,7 +430,47 @@ function isBracketsBalanced(str) {
  *
  */
 function timespanToHumanString(startDate, endDate) {
-    throw new Error('Not implemented');
+    let timeDiff = endDate - startDate;
+    let result = "";
+    let m = 60*1000;
+    let h = 60*m;
+    let d = 24 * h;
+    switch (true) {
+        case timeDiff >= 0 && timeDiff <= 45*1000:
+            result = "a few seconds ago";
+            break;
+        case timeDiff > 45*1000 && timeDiff <= 90*1000:
+            result = "a minute ago";
+            break;
+        case timeDiff > 90*1000 && timeDiff <= 45*m:
+            result = Math.ceil(timeDiff / m-0.5) + " minutes ago";
+            break;
+        case timeDiff > 45 * m && timeDiff <= 90 * m:
+            result = "an hour ago";
+            break;
+        case timeDiff > 90 * m && timeDiff <= 22 * h:
+            result = Math.ceil(timeDiff/h-0.5) + " hours ago";
+            break;
+        case timeDiff > 22 * h && timeDiff <= 36 * h:
+            result = "a day ago";
+            break;
+        case timeDiff > 36 * h && timeDiff <= 25*d:
+            result = Math.ceil(timeDiff / d - 0.5) + " days ago";
+            break;
+        case timeDiff > 25 * d && timeDiff <= 45 * d:
+            result = "a month ago";
+            break;
+        case timeDiff > 45 * d && timeDiff <= 345*d:
+            result = Math.ceil(timeDiff / d / 30 - 0.5) + " months ago";
+            break;
+        case timeDiff > 345 * d && timeDiff <= 545 * d:
+            result = "a year ago";
+            break;
+        case timeDiff > 545 * d:
+            result = Math.ceil(timeDiff / d / 365 - 0.5) + " years ago";
+            break;
+    }
+    return result;
 }
 
 
@@ -412,9 +494,13 @@ function timespanToHumanString(startDate, endDate) {
  *    365, 10 => '365'
  */
 function toNaryString(num, n) {
-    throw new Error('Not implemented');
+    let a = "";
+    while (num > 0) {
+       a+= num % n;
+       num = Math.floor (num/n);
+    }
+    return a.split("").reverse().join("");
 }
-
 
 /**
  * Returns the commom directory path for specified array of full filenames.
@@ -429,7 +515,25 @@ function toNaryString(num, n) {
  *   ['/web/favicon.ico', '/web-scripts/dump', '/webalizer/logs'] => '/'
  */
 function getCommonDirectoryPath(pathes) {
-    throw new Error('Not implemented');
+    let a = "/";
+    let res = "/";
+    let arr = pathes[0].split(a);
+    arr.splice(0, 1);
+    for (let b of pathes) {
+        if (!b.startsWith(a)) {
+            return "";
+        }
+    }
+
+    for (let s of arr) {
+        for (let r of pathes) {
+            if (!r.startsWith(res + s + a)) {
+                return res;
+            }
+        }
+        res+=s+a;
+    }
+    return "";
 }
 
 
