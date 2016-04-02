@@ -556,7 +556,18 @@ function getCommonDirectoryPath(pathes) {
  *
  */
 function getMatrixProduct(m1, m2) {
-    throw new Error('Not implemented');
+    var n = m1.length;
+    var x = [];
+    for (var i = 0; i < n; i++){
+        x[i] = [];
+        for (var j = 0; j < n; j++){
+            x[i][j] = 0;
+            for (let f = 0; f < m2.length; f++) {
+                x[i][j] += m1[i][f] * m2[f][j];
+            }
+        }
+    }
+    return x;
 }
 
 
@@ -591,7 +602,45 @@ function getMatrixProduct(m1, m2) {
  *
  */
 function evaluateTicTacToePosition(position) {
-    throw new Error('Not implemented');
+    let a;
+    a = position[0][0] + position[1][1] + position[2][2];
+
+
+    if (a == "XXX") {
+        return "X";
+    }
+    if (a == "000") {
+        return "0";
+    }
+    a = position[0][2] + position[1][1] + position[2][0];
+    if (a == "XXX") {
+        return "X";
+    }
+    if (a == "000") {
+        return "0";
+    }
+    let j;
+    for (let i = 0; i <=2; i++) {
+        j=2-i;
+
+        a = position[i][0] + position[i][1] + position[i][2];
+        if (a == "XXX") {
+            return "X";
+        }
+        if (a == "000") {
+            return "0";
+        }
+
+        a = position[0][i] + position[1][i] + position[2][i];
+        if (a == "XXX") {
+            return "X";
+        }
+        if (a == "000") {
+            return "0";
+        }
+    }
+
+    return undefined;
 }
 
 

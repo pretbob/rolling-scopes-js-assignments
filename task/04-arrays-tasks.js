@@ -474,7 +474,7 @@ function toStringList(arr) {
 function sortCitiesArray(arr) {
    var arr1 = [];
    arr1 = arr.sort(function (a,b) {
-      return  (a.country).localeCompare(b.country) || (a.city).localeCompare(b.city);
+      return (a.country).localeCompare(b.country) || (a.city).localeCompare(b.city);
    });
    return arr1;
 }
