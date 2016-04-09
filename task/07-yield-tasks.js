@@ -33,7 +33,22 @@
  *
  */
 function* get99BottlesOfBeer() {
-    throw new Error('Not implemented');
+    let a = 99;
+    while (a > 1){
+        let c = a - 1;
+        yield a + " bottles of beer on the wall, " + a + " bottles of beer.";
+        if (c===1){
+            yield "Take one down and pass it around, 1 bottle of beer on the wall.";
+        }
+        else {
+            yield "Take one down and pass it around, " + c + " bottles of beer on the wall.";
+        }
+        a--;
+    }
+    yield '1 bottle of beer on the wall, 1 bottle of beer.';
+    yield 'Take one down and pass it around, no more bottles of beer on the wall.';
+    yield 'No more bottles of beer on the wall, no more bottles of beer.';
+    yield 'Go to the store and buy some more, 99 bottles of beer on the wall.';
 }
 
 
@@ -47,7 +62,17 @@ function* get99BottlesOfBeer() {
  *
  */
 function* getFibonacciSequence() {
-    throw new Error('Not implemented');
+   yield 0;
+   let t;
+   let x = 1;
+   yield x;
+   let y = 0;
+   while (true){
+       t= x + y;
+       yield t;
+       y = x;
+       x = t;
+   }
 }
 
 
@@ -82,7 +107,17 @@ function* getFibonacciSequence() {
  *
  */
 function* depthTraversalTree(root) {
-    throw new Error('Not implemented');
+    let a =[root];
+    let b;
+    while (a.length){
+        yield b = a.pop();
+        let c = b.children;
+        if (c) {
+            for (let i = c.length; i--;){
+                a.push(c[i]);
+            }
+        }
+    }
 }
 
 
@@ -108,7 +143,13 @@ function* depthTraversalTree(root) {
  *
  */
 function* breadthTraversalTree(root) {
-    throw new Error('Not implemented');
+    let a =[root];
+    for (let i of a) {
+        yield i;
+        if (i.children) {
+            a.push(... i.children);
+        }
+    }
 }
 
 
@@ -126,7 +167,20 @@ function* breadthTraversalTree(root) {
  *   [ 1, 3, 5, ... ], [ -1 ] => [ -1, 1, 3, 5, ...]
  */
 function* mergeSortedSequences(source1, source2) {
-    throw new Error('Not implemented');
+    let a = source1();
+    let c = a.next();
+    let b = source2();
+    let d = b.next();
+    while (true) {
+        if (d.done || c.value < d.value) {
+            yield c.value;
+            c = a.next();
+        }
+        else  {
+            yield d.value;
+            d = b.next();
+        }
+    }
 }
 
 
